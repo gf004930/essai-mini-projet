@@ -29,6 +29,7 @@ describe "Author pages" do
         fill_in "Name",         with: "Example Name"
         fill_in "Firstname",    with: "Example Firstname"
         fill_in "Email",        with: "user@example.com"
+        fill_in "Lab",          with: "1"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
       end
