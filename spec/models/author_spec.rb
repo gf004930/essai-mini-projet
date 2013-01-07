@@ -61,10 +61,33 @@ describe Author do
   describe "when name and firstname are already taken" do
     before do
       user_with_same_name_and_firstname = @author.dup
+      user_with_same_name_and_firstname.email = "another@example.com"
       user_with_same_name_and_firstname.save
     end
 
     it { should_not be_valid }
+  end
+
+  describe "when only name is already taken" do
+    before do
+      user_with_same_name = @author.dup
+      user_with_same_name.email = "another@example.com"
+      user_with_same_name.firstname = "another"
+      user_with_same_name.save
+    end
+
+    it { should be_valid }
+  end
+
+  describe "when only firstname is already taken" do
+    before do
+      user_with_same_firstname = @author.dup
+      user_with_same_firstname.email = "another@example.com"
+      user_with_same_firstname.name = "another"
+      user_with_same_firstname.save
+    end
+
+    it { should be_valid }
   end
 
   describe "when email format is invalid" do
